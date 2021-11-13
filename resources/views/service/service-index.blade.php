@@ -66,6 +66,7 @@
                             <th>{{clean( trans('niva-backend.box_icon') , array('Attr.EnableID' => true))}}</th>
                             <th>{{clean( trans('niva-backend.title') , array('Attr.EnableID' => true))}}</th>
                             <th>{{clean( trans('niva-backend.description') , array('Attr.EnableID' => true))}}</th>
+                            <th>{{clean( trans('niva-backend.price') , array('Attr.EnableID' => true))}}</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -75,6 +76,7 @@
                             <th>{{clean( trans('niva-backend.box_icon') , array('Attr.EnableID' => true))}}</th>
                             <th>{{clean( trans('niva-backend.title') , array('Attr.EnableID' => true))}}</th>
                             <th>{{clean( trans('niva-backend.description') , array('Attr.EnableID' => true))}}</th>
+                            <th>{{clean( trans('niva-backend.price') , array('Attr.EnableID' => true))}}</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -89,6 +91,7 @@
                                     <td data-label="link">{!!$service->icon!!}</td>
                                     <td data-label="link">{{$service->title}}</td>
                                     <td data-label="link">{{$service->description}}</td>
+                                    <td data-label="link">{{$service->price}}</td>
                                 </tr>
                              @endforeach
                         @endif

@@ -63,20 +63,33 @@
                                     
                                     
                                     
+                                    <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="row">
 
-                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                         <div class="form-group">
                                         <strong>{{clean( trans('niva-backend.photo') , array('Attr.EnableID' => true))}}</strong>
                                         <input type="file"  name="photo_id" class="form-control-file"  id="photo_id">
                                     </div>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <strong>{{clean( trans('niva-backend.select_language') , array('Attr.EnableID' => true))}}</strong>
-                                        <select name="language_id" id="language_id" class="form-control">
-                                            @foreach($langs as $lang)
-                                                <option value="{{ $lang->id }}">{{ $lang->name }}</option>
-                                            @endforeach 
-                                        </select>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <strong>{{clean( trans('niva-backend.price') , array('Attr.EnableID' => true))}}</strong>
+                                                <input type="text" name="price" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        
+
+                                </div>
+                                </div>
                                     </div>
+
+
+
+                                    
                                 
                                 </div>
   

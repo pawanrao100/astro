@@ -20,11 +20,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(5);
+        $users = User::latest()->where('role_id',3)->paginate(5);
 
         
 
         return view('users.index', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function experts()
+    {
+        $users = User::latest()->where('role_id',2)->paginate(5);
+
+        
+
+        return view('users.expert', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -57,7 +66,7 @@ class UserController extends Controller
 
         if ($file = $request->file('photo_id')) {
             
-            $name = time() . $file->getClientOriginalName();
+           $name = time() . $file->getClientOriginalName();
 
             $file->move('images/media/', $name);
 

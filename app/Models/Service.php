@@ -14,7 +14,8 @@ class Service extends Model
         'photo_id',
         'icon',
         'title',
-        'description'
+        'description',
+        'price'
     ];
 
     public function photo(){

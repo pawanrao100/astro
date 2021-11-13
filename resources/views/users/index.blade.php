@@ -39,6 +39,7 @@
                 <div class="form-group">
                     <select name="checkbox_array" id="" class="form-control">
                         <option value="">{{clean( trans('niva-backend.delete') , array('Attr.EnableID' => true))}}</option>
+                        <option value="">{{clean( trans('niva-backend.enable') , array('Attr.EnableID' => true))}}</option>
                     </select>
                 </div>
 
@@ -81,7 +82,7 @@
                                         </div>
                                     </td>
                                     <td data-label="Name and surname">{{$user->email}}</td>
-                                    <td data-label="Role">{{$user->role ? $user->role->name : ''}}</td>
+                                    <td data-label="Role">{{$user->role ? $user->role->disp_name : ''}}</td>
                                 </tr>
                              @endforeach
                         @endif

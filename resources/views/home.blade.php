@@ -1,308 +1,270 @@
-@extends('layouts.front')
-
-@section('title') {{$homesetting->meta_title}} @endsection
-@section('meta') {{$homesetting->meta_description}} @endsection
-
-
-@section('content')
-
-
-
-    <div class="slider-venor-section">
-        <div class="slider-venor owl-carousel">
-            
-            @foreach( $sliders as $slido )
-            
-            <div class="slider-inner-venor">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5">
-                            <div class="slider-content">
-                               <h1>{!!$slido->heading1!!} </h1>
-                               <h2 class="@if($slido->typed_text) typed_active @endif">{!!$slido->heading2!!}</h2>
-
-                               @if($slido->typed_text)
-                                    <script type="text/javascript">
-                                        var arr = {!!$slido->typed_text!!};
-                                    </script> 
-                                @endif
-
-                               <div class="slider-body">{!!$slido->bodyslider!!}</div>
-                               <a href="{!!$slido->button_link!!}" target="_self" class="btn btn-slider"><span>{!!$slido->button_text!!}</span></a>
-                               <a href="{!!$slido->button_link2!!}" target="_self" class="btn btn-slider2"><span>{!!$slido->button_text2!!}</span></a>
-                            </div>
-                            
-                         </div>
-                         <div class="col-md-7">
-                            <div class="slider-image">
-                               <img width="450" height="450" class="owl-lazy img-fluid slider-img" src="/public/img/loading-blog.gif" data-src="{{$slido->photo ? '/public/images/media/' . $slido->photo->file : '/public/img/200x200.png'}}" alt="" >
-                            </div>
-                         </div>
-                     </div>
-                </div>
-            </div>
-
-            
-
-            @endforeach
-        
-        </div>
-
-
-    </div>
-
-    
-
-    <div class="about-section">
-        <div class="container">
-            <div class="row">
-               
-                <div class="col-md-7">
-                    
-                    <div class="pictures-row">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="item-about">
-                                    <div class="imgone big-paral">
-                                        <div class="simpleParallax"><img src="/public/img/loading-blog.gif" width="500" height="666" class="lazy thumparallax-down img-fluid" data-src="{{$homesetting->about_image1}}" alt="two-images-1.jpg"></div>
-                                    </div>
-                                    <div class="exp-about">
-                                        <h5 class="nmb-font-about">{{$homesetting->about_yearstitle}}</h5>
-                                        <h6 class="service_summary-about">{{$homesetting->about_yearstext}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="item-about">
-                                    <div class="imgtwo big-paral">
-                                        <div class="simpleParallax"><img src="/public/img/loading-blog.gif" width="500" height="820" class="lazy thumparallax img-fluid" data-src="{{$homesetting->about_image2}}" alt="two-images-1.jpg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-5">
-
-                    <h4 class="about-heading1-home">{!!$homesetting->about_subtitle!!}</h4>
-                    <h3 class="about-heading2-home">{!!$homesetting->about_title!!}</h3>
-
-                    {!!$homesetting->about_description!!}
-
-                    <a href="{{$homesetting->about_buttonlink}}" target="_self" class="btn btn-style1"><span>{{$homesetting->about_buttontext}}</span></a>
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
-    <div class="services-section">
-        <div class="container">
-            
-            <h3>{!!$homesetting->services_title!!}</h3>
-
-            <div class="description-services">{!!$homesetting->sevices_text!!}</div>
-
-            <div class="service-boxes-slider owl-carousel">
-                
-                @foreach( $services as $service )
-
-                <div class="card-parent">
-                    <div class="card featured to-top-left">
-        
-                        <div class="heading-wrapper">
-                            <h4 class="heading">{!!$service->icon!!} {{$service->title}}</h4>
-                        </div> 
-        
-                        <div class="paragraph-wrapper">
-                            <p class="paragraph">{{$service->description}}</p>
-                        </div>
-        
-                        <div class="image-wrapper to-bottom">
-                            <div class="gallery">
-                                <img width="400" height="400" class="lazy img-fluid" src="/public/img/loading-blog.gif" data-src="{{$service->photo ? '/public/images/media/' . $service->photo->file : '/public/img/200x200.png'}}" alt="{{$service->title}}">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                @endforeach
-
-            </div> 
-     
-        </div>
-    </div>
-
-     <div class="portfolio-section">
-        <div class="container">
-            <h4>{{$homesetting->projects_subtitle}}</h4>
-            <h3>{!!$homesetting->projects_title!!}</h3>
-
-
-
-            <div class="row">
-                
-                @foreach($projects as $key=>$project)
-                    
-                    <div class="col-md-6">
-                        <a href="{{URL::to('/')}}/project/{{$project->slug}}" title="{{$project->title}}">
-                            <div data-tilt data-tilt-gyroscope="false" data-tilt-scale="1.05" data-tilt-speed="200"  data-tilt-perspective="700" data-hover="" data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-max="30"  class="project-box-div">
-
-                                <div class="project-image-container">
-                                    <div class="project-image-container-inner">
-                                        <img class="project-image lazy" width="410" height="230" src="/public/img/loading-blog.gif " data-src="{{$project->photo ? '/public/images/media/' . $project->photo->file : '/public/img/200x200.png'}}" alt="{{$project->title}}">
-                                    </div>
-                                </div>
-                                <div class="project-meta">
-                                    <div class="project-meta-title">
-                                        <span class="project__text">{{$project->title}}</span>
-                                    </div>
-                                    <div class="divider"></div>
-                                    <div class="project-category">
-                                        <span class="block_text">{{$project->project_category->name}} </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    @if ($key == 3)
-                        @break
-                    @endif
-
-
-                @endforeach
-
-            
-            </div>
-        </div>
-    </div>
-
-     <div class="fun-facts-section" id="fun-facts">
-        <div class="container">
-
-            <h3 class="fun-facts-heading1">{{$homesetting->fun_title}}</h3>
-
-            <p>{{$homesetting->fun_description}}</p>
-
-            <div class="row fun-facts-timer">
-                <div class="col-md-3">
-                    <div class="radial">
-                        <span class="timer" data-from="0" data-to="{{$homesetting->count_number1}}" data-speed="4000">{{$homesetting->count_number1}}</span>
-                        <h4>{{$homesetting->count_description1}}</h4>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="radial">
-                        <span class="timer" data-from="0" data-to="{{$homesetting->count_number2}}" data-speed="4000">{{$homesetting->count_number2}}</span>
-                        <h4>{{$homesetting->count_description2}}</h4>
-                    </div>
-                    
-                </div>
-                <div class="col-md-3">
-                    <div class="radial">
-                        <span class="timer" data-from="0" data-to="{{$homesetting->count_number3}}" data-speed="4000">{{$homesetting->count_number3}}</span>
-                        <h4>{{$homesetting->count_description3}}</h4>
-                    </div>
-                    
-                </div>
-                <div class="col-md-3">
-                    <div class="radial">
-                        <span class="timer" data-from="0" data-to="{{$homesetting->count_number4}}" data-speed="4000">{{$homesetting->count_number4}}</span>
-                        <h4>{{$homesetting->count_description4}}</h4>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-
-    <div class="testimonial-section">
-
-        <div class="testimonial-section-slider owl-carousel">
-
-            @foreach($testimonials as $testimonial)
-            <blockquote class="testimonial-slide">
-                <div class="section_title">{{$testimonial->subtitle}}</div>
-                <span class="testimonial_slider_title">{{$testimonial->title}}</span>
-                    <div class="testimonial-area">
-                        <div class="testimonial-layoutArea">
-                           <p>{{$testimonial->description}}</p>
-                        </div>
-                    </div>
-                <div class="testimonials_slider_name"> {{$testimonial->name}}<span> - {{$testimonial->position}}</span></div>
-            </blockquote>
-            @endforeach
-
-        </div>
-
-    </div>
-
-    <div class="blog-section">
-
-        <div class="container">
-
-            <h3 class="blog-section-subtitle">{!!$homesetting->blog_subtitle!!}</h3>
-            <h3 class="blog-section-title">{!!$homesetting->blog_title!!}</h3>
-
-            <div class="row">
-
-                @foreach($posts as $post)
-                <div class="col-md-4">
-                    <article class="blog-single-post">
-                        <div class="blog_custom">
-
-                            <div class="post-thumbnail">
-                                <a class="relative" href="{{URL::to('/')}}/post/{{$post->slug}}">
-                                    <div class="featured_image_blog">
-                                        <img class="lazy blog_post_image img-fluid" width="350" height="300" src="https://cdn.dribbble.com/users/105033/screenshots/1132714/loading-animation-800.gif" data-src="{{$post->photo ? '/public/images/media/' . $post->photo->file : '/public/img/200x200.png'}}" alt="{{$post->title}}">
-                                        <div class="flex-icon">
-                                            <div class="flex-icon-inside">
-                                                <i class="fas fa-link"></i>
-                                            </div>
-                                      </div>
-                                    </div>
-                                </a>
-                                <div class="post-categories">
-                                   <p>{{$post->category->name}}</p>
-                                </div>
-                            </div>
-
-                            <div class="post-details">
-                                <h3 class="post-name">
-                                    <a href="{{URL::to('/')}}/post/{{$post->slug}}" title="{{$post->title}}">{{$post->title}}</a>
-                                </h3>
-                                <div class="post-category-comment-date">                             
-                                   <span class="post-date"><i class="far fa-clock"></i> {{ date('d.M.Y', strtotime($post->created_at)) }}</span>
-                                   <span class="post-author">
-                                   <i class="far fa-user" ></i>
-                                   <a href="#0">{{$post->user->name}}</a>
-                                   </span>
-                                </div>
-                                
-    
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                @endforeach
-
-                
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-@endsection
-
+<?php use App\Models\Photo; ?>
+
+@include('layouts.header')
+<main>
+	<div class="header-video">
+		<div id="hero_video">
+			<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.7)">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-8 col-lg-10 col-md-8 text-left">
+							<h1>Find a Professional</h1>
+							<p>Book a Consultation by Appointment, Chat </p>
+							<form method="post" action="listing.html">
+								<div class="d-flex">
+									<div class="row no-gutters custom-search-input">
+										<div class="col-md-9">
+											<div class="form-group">
+												<input class="form-control" type="text" placeholder="Find a professional...">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<input type="submit" value="Find">
+										</div>
+									</div>
+									<!-- /row -->
+								</div>
+								<!-- <div class="search_trends">
+		                                <h5>Trending:</h5>
+		                                <ul>
+		                                    <li><a href="#0">doctor</a></li>
+		                                    <li><a href="#0">lawyer</a></li>
+		                                    <li><a href="#0">teacher</a></li>
+		                                    <li><a href="#0">psychologist</a></li>
+		                                </ul>
+		                            </div> -->
+							</form>
+						</div>
+					</div>
+					<a href="#first_section" class="btn_explore"><span class="pulse_bt"><i class="arrow_down"></i></span></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<img src="img/video_fix.png" alt="" class="header-video--media" data-video-src="video/intro" data-teaser-source="video/intro" data-provider="" data-video-width="1920" data-video-height="960">
+		<video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+			<source src="video/intro.mp4" type="video/mp4">
+			<source src="video/intro.ogv" type="video/ogg">
+		</video>
+	</div>
+	<!-- /hero_single -->
+	<div class="bg_gray" id="first_section">
+		<div class="container margin_60_40">
+			<div class="main_title center">
+				<span><em></em></span>
+				<h2>Popular Categories</h2>
+				<p>Lorem Ipsum is simply dummy text of the printing.</p>
+			</div>
+			<!-- /main_title -->
+			<div class="owl-carousel owl-theme categories_carousel">
+				@foreach ($category as $category)
+				<?php  $photo = Photo::where('id',$category->icon_photo_id)->first(); ?>
+				 <div class="item">
+					<a href="listing.html">
+						<span>98</span>
+						<img src="{{ URL::to('/') }}/public/images/media/{{$photo->file}}" data-src="{{ URL::to('/') }}/public/images/media/{{$photo->file}}" alt="" class="owl-lazy">
+						<h3>{{ $category->name }}</h3>
+						<!-- <small>Avg price $40 Hr.</small> -->
+					</a>
+				</div>
+				@endforeach
+
+			</div>
+			<!-- /carousel -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bg_gray -->
+	<div class="container margin_60_40">
+		<div class="main_title center">
+			<span><em></em></span>
+			<h2>Popular Professionals</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing.</p>
+		</div>
+		<div class="row add_bottom_15">
+		@foreach ($experts as $experts)
+		<?php  $photo = Photo::where('id',$experts->photo_id)->first(); ?>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+				<div class="strip">
+					<figure>
+						<a href="#0" class="wish_bt"><i class="icon_heart"></i></a>
+						<div class="score"><strong>9.5</strong></div>
+						<img src="img/lazy-placeholder.png" data-src="{{ URL::to('/') }}/public/images/media/{{$photo->file}}" class="img-fluid lazy" alt="">
+						<a href="{{ URL::to('/expert-detail/') }}/{{$experts->id}}" class="strip_info">
+							<div class="item_title">
+								<h3>{{$experts->name}} <small>2+ Exp.</small></h3>
+
+								<small>Astrologer</small>
+							</div>
+						</a>
+					</figure>
+					<ul>
+						<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="bottom" title="Available Appointment"><i class="icon-users"></i></a></li>
+						<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="bottom" title="Available Chat"><i class="icon-chat"></i></a></li>
+
+						<li>
+							<div><span>Avg price $35 Hr.</span></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			@endforeach
+			<!-- /strip grid -->
+			
+		</div>
+		<!-- /row -->
+		<p class="text-center add_bottom_30"><a href="listing.html" class="btn_1 medium">Start Searching</a></p>
+		<div class="row">
+			<div class="col-12">
+				<div class="main_title version_2">
+					<span><em></em></span>
+					<h2>Weekly Rate Offer</h2>
+					<p>Lorem Ipsum is simply dummy text of the printing.</p>
+					<a href="#0">View All</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="list_home">
+					<ul>
+						<li>
+							<a href="detail-page.html">
+								<figure>
+									<img src="img/professional_list_placeholder.png" data-src="img/professional_list_1.jpg" alt="" class="lazy">
+								</figure>
+								<div class="score"><strong>9.5</strong></div>
+								<em>Astrologer</em>
+								<h3>Laura Marting</h3>
+								<small>8 Patriot Square E2 9NF</small>
+								<ul>
+									<li><span class="ribbon off">-30%</span></li>
+									<li>Average price $35</li>
+								</ul>
+							</a>
+						</li>
+						<li>
+							<a href="detail-page.html">
+								<figure>
+									<img src="img/professional_list_placeholder.png" data-src="img/professional_list_2.jpg" alt="" class="lazy">
+								</figure>
+								<div class="score"><strong>8.0</strong></div>
+								<em>Astrologer</em>
+								<h3>Anna Smith</h3>
+								<small>27 Old Gloucester St, 4563</small>
+								<ul>
+									<li><span class="ribbon off">-40%</span></li>
+									<li>Average price $30</li>
+								</ul>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="list_home">
+					<ul>
+						<li>
+							<a href="detail-page.html">
+								<figure>
+									<img src="img/professional_list_placeholder.png" data-src="img/professional_list_3.jpg" alt="" class="lazy">
+								</figure>
+								<div class="score"><strong>9.5</strong></div>
+								<em>Astrologer</em>
+								<h3>Dr. Stefany Lens</h3>
+								<small>27 Old Gloucester St, 4563</small>
+								<ul>
+									<li><span class="ribbon off">-30%</span></li>
+									<li>Average price $20</li>
+								</ul>
+							</a>
+						</li>
+						<li>
+							<a href="detail-page.html">
+								<figure>
+									<img src="img/professional_list_placeholder.png" data-src="img/professional_list_4.jpg" alt="" class="lazy">
+								</figure>
+								<div class="score"><strong>8.0</strong></div>
+								<em>Astrologer</em>
+								<h3>Lucy Clarks</h3>
+								<small>22 Hertsmere Rd E14 4ED</small>
+								<ul>
+									<li><span class="ribbon off">-50%</span></li>
+									<li>Average price $35</li>
+								</ul>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="bg_gray">
+		<div class="container margin_60_40 how">
+			<div class="main_title center">
+				<span><em></em></span>
+				<h2>How does it work?</h2>
+				<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+			</div>
+			<div class="row justify-content-center align-items-center add_bottom_45">
+				<div class="col-lg-5">
+					<div class="box_about">
+						<strong>1</strong>
+						<h3>Search for a Professional</h3>
+						<p>Search over 12.000 verifyed professionals that match your criteria.</p>
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/arrow_about.png" alt="" class="arrow_1 lazy">
+					</div>
+				</div>
+				<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+					<figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/about_1.svg" alt="" class="img-fluid lazy" width="180" height="180"></figure>
+				</div>
+			</div>
+			<!-- /row -->
+			<div class="row justify-content-center align-items-center add_bottom_45">
+				<div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
+					<figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/about_2.svg" alt="" class="img-fluid lazy" width="180" height="180"></figure>
+				</div>
+				<div class="col-lg-5">
+					<div class="box_about">
+						<strong>2</strong>
+						<h3>View Professional Profile</h3>
+						<p>View professional introduction and read reviews from other customers.</p>
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/arrow_about.png" alt="" class="arrow_2 lazy">
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+			<div class="row justify-content-center align-items-center add_bottom_25">
+				<div class="col-lg-5">
+					<div class="box_about">
+						<strong>3</strong>
+						<h3>Enjoy the Consultation</h3>
+						<p>Connect with your professional booking an appointment, via chat!</p>
+					</div>
+				</div>
+				<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+					<figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/about_3.svg" alt="" class="img-fluid lazy" width="180" height="180"></figure>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bg_gray -->
+	<div class="call_section version_2 lazy" data-bg="url(img/bg_call_section.jpg)">
+		<div class="container clearfix">
+			<div class="col-lg-5 col-md-6 float-right wow">
+				<div class="box_1">
+					<div class="ribbon_promo"><span>Free</span></div>
+					<h3>Are you a Expert?</h3>
+					<p>Join Us to increase your online visibility. You'll have access to even more customers who are looking to professional service or consultation.</p>
+					<a href="#" class="btn_1">Join Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/call_section-->
+</main>
+<!-- /main -->
+@include('layouts.footer')

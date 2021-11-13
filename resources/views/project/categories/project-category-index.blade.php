@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 
 @section('content')
@@ -19,7 +20,7 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <a href="{{route('project.index') . '?language=' . request()->input('language')}}" class="btn btn-primary btn-back">{{clean( trans('niva-backend.back_projectpage') , array('Attr.EnableID' => true))}}</a>
+                        <!-- <a href="{{route('project.index') . '?language=' . request()->input('language')}}" class="btn btn-primary btn-back">{{clean( trans('niva-backend.back_projectpage') , array('Attr.EnableID' => true))}}</a> -->
                     </div>
                     <div class="col-lg-6">
                         <div class="text-right ">
@@ -66,6 +67,7 @@
                                 <tr>
                                     <th><input type="checkbox" id="options"></th>
                                     <th scope="col">{{clean( trans('niva-backend.id') , array('Attr.EnableID' => true))}}</th>
+                                    <th scope="col">{{clean( trans('niva-backend.iconphoto') , array('Attr.EnableID' => true))}}</th>
                                     <th scope="col">{{clean( trans('niva-backend.name') , array('Attr.EnableID' => true))}}</th>
                                 </tr>
                             </thead>
@@ -73,6 +75,7 @@
                                 <tr>
                                     <th><input type="checkbox" id="options1"></th>
                                     <th scope="col">{{clean( trans('niva-backend.id') , array('Attr.EnableID' => true))}}</th>
+                                    <th scope="col">{{clean( trans('niva-backend.iconphoto') , array('Attr.EnableID' => true))}}</th>
                                     <th scope="col">{{clean( trans('niva-backend.name') , array('Attr.EnableID' => true))}}</th>
                                 </tr>
                             </tfoot>
@@ -81,7 +84,8 @@
                                     @foreach($categories as $category)
                                         <tr>
                                             <td><input class="checkboxes" type="checkbox" name="checkbox_array[]" value="{{$category->id}}"></td>
-                                            <td data-label="ID">{{$category->id}}</td>
+                                            <td data-label="ID">{{$category->id}}</td> 
+                                            <td data-label="iconimage"><img width="35" height="35" src="{{$category->photo ? '/public/images/media/' . $category->photo->file : '/public/img/200x200.png'}}" alt=""></td>
                                             <td data-label="name">{{$category->name}}<p class="mb-0 mt-2"><a href="{{ route('project-category.edit', $category->id)  . '?language=' . request()->input('language')}}">{{clean( trans('niva-backend.edit') , array('Attr.EnableID' => true))}}</a></p></td>
                                         </tr>
                                      @endforeach
@@ -107,8 +111,11 @@
                                     <div class="form-group">
                                         <strong>{{clean( trans('niva-backend.category') , array('Attr.EnableID' => true))}}</strong>
                                         <input type="text" name="name" class="form-control" >
-
                                         <input type="hidden" name="language_id" value="{{$lang_id}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <strong>{{clean( trans('niva-backend.iconphoto') , array('Attr.EnableID' => true))}}</strong>
+                                        <input type="file" name="icon_photo_id" class="form-control-file" id="icon_photo_id">
                                     </div>
                                     
                                 </div>

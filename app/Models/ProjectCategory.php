@@ -12,6 +12,9 @@ class ProjectCategory extends Model
     protected $fillable = [
     	'language_id',
         'name',
-
+        'icon_photo_id',
     ];
+    public function photo(){
+        return $this->belongsTo('App\Models\Photo', 'photo_id');
+    }
 }

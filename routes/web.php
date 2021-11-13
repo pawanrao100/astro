@@ -62,6 +62,7 @@ Route::group(['middleware' => 'setlang'], function () {
     Route::get('/changelanguage/{lang}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
     
     Route::get('/about-us', [HomeController::class, 'about'])->name('about');
+    Route::get('/expert-detail/{number}', [HomeController::class, 'expertdetail'])->name('expert-detail');
     Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
     Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
     Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
@@ -80,7 +81,7 @@ Route::middleware(['author'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::resource('admin/users', UserController::class);
-
+    Route::get('admin/experts', [UserController::class, 'experts'])->name('users.experts');
     Route::resource('admin/media', AdminMediasController::class);
     Route::delete('/delete/media', [AdminMediasController::class, 'deleteMedia'])->name('delete.media');
 

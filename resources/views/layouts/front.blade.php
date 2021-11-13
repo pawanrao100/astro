@@ -122,6 +122,7 @@
     @endif
 
 </head>
+
 <body class="common-front @if($currentLang->rtl == 1) rtl @endif" @if($currentLang->rtl == 1) dir="rtl" @endif>
 
     <header class="header">

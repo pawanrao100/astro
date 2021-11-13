@@ -10,9 +10,11 @@
     <meta name="author" content="">
     <title>Admin</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="{{asset('css/libs/bootstrap4.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/fontawesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/custom-dashboard.css')}}" rel="stylesheet">
+    <link href=" {{asset('/css/libs/bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/libs/fontawesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/libs/custom-dashboard.css')}}" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
     
     @yield('styles')
 
@@ -29,9 +31,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#0">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fab fa-github"></i>
+                 
                 </div>
-                <div class="sidebar-brand-text mx-3">Astrology</div>
+                <div class="sidebar-brand-text mx-3">Best Astrology</div>
             </a>
 
             <!-- Divider -->
@@ -88,8 +90,8 @@
                 </a>
                 <div id="collapseProjects" class="collapse"  data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('project.index') }}?language=@php echo $lang->code; @endphp">{{clean( trans('niva-backend.all_projects') , array('Attr.EnableID' => true))}}</a>
-                        <a class="collapse-item" href="{{ route('project.create') }}?language=@php echo $lang->code; @endphp">{{clean( trans('niva-backend.create_project') , array('Attr.EnableID' => true))}}</a>
+                        <!-- <a class="collapse-item" href="{{ route('project.index') }}?language=@php echo $lang->code; @endphp">{{clean( trans('niva-backend.all_projects') , array('Attr.EnableID' => true))}}</a> -->
+                        <!-- <a class="collapse-item" href="{{ route('project.create') }}?language=@php echo $lang->code; @endphp">{{clean( trans('niva-backend.create_project') , array('Attr.EnableID' => true))}}</a> -->
                         <h6 class="collapse-header">{{clean( trans('niva-backend.categories') , array('Attr.EnableID' => true))}}</h6>
                         <a class="collapse-item" href="{{ route('project-category.index') }}?language=@php echo $lang->code; @endphp">{{clean( trans('niva-backend.all_categories') , array('Attr.EnableID' => true))}}</a>
                     </div>
@@ -137,11 +139,41 @@
                 </a>
                 <div id="collapseUsers" class="collapse"  data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('users.index') }}">{{clean( trans('niva-backend.all_users') , array('Attr.EnableID' => true))}}</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">{{clean( trans('niva-backend.users') , array('Attr.EnableID' => true))}}</a>
+                        <a class="collapse-item" href="{{ route('users.experts') }}">{{clean( trans('niva-backend.expert_users') , array('Attr.EnableID' => true))}}</a>
                         <a class="collapse-item" href="{{ route('users.create') }}">{{clean( trans('niva-backend.create_user') , array('Attr.EnableID' => true))}}</a>
                     </div>
                 </div>
             </li>
+           
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin" data-toggle="collapse" data-target="#collapseServices"
+                    aria-expanded="true" aria-controls="collapseServices">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>{{clean( trans('niva-backend.section_4_services') , array('Attr.EnableID' => true))}}</span>
+                </a>
+                <div id="collapseServices" class="collapse"  data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('service.index') }}?language=@php echo $lang->code; @endphp">Manage services</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin" data-toggle="collapse" data-target="#collapseReviwes"
+                    aria-expanded="true" aria-controls="collapseReviwes">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>{{clean( trans('niva-backend.section_4_reviwes') , array('Attr.EnableID' => true))}}</span>
+                </a>
+                <div id="collapseReviwes" class="collapse"  data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('testimonial.index') }}?language=@php echo $lang->code; @endphp">Manage reviwes</a>
+                    </div>
+                </div>
+            </li>
+          
+                
+        
             @endif
 
             @if(Auth::user()->role->name == 'administrator')
@@ -155,9 +187,7 @@
                 <div id="collapseElements" class="collapse"  data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     	<a class="collapse-item" href="{{ route('slider.index') }}?language=@php echo $lang->code; @endphp">Manage slider </a>
-                    	<a class="collapse-item" href="{{ route('service.index') }}?language=@php echo $lang->code; @endphp">Manage services</a>
-                    	<a class="collapse-item" href="{{ route('testimonial.index') }}?language=@php echo $lang->code; @endphp">Manage testimonials</a>
-                        <a class="collapse-item" href="{{ route('member.index') }}?language=@php echo $lang->code; @endphp">Manage members</a>
+                    	<a class="collapse-item" href="{{ route('member.index') }}?language=@php echo $lang->code; @endphp">Manage members</a>
                         <a class="collapse-item" href="{{ route('client.index') }}?language=@php echo $lang->code; @endphp">Manage clients</a>
                         <a class="collapse-item" href="{{ route('pricing.index') }}?language=@php echo $lang->code; @endphp">Pricing tables</a>
                     </div>
@@ -230,7 +260,7 @@
     
 
 
-                        <li> <a target="_blank" href="{{ route('home') }}" class="view-website-link d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fab fa-chrome"></i> {{clean( trans('niva-backend.view_website') , array('Attr.EnableID' => true))}}</a></li>
+                        
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 

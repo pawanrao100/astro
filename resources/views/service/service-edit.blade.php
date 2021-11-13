@@ -63,15 +63,34 @@
 
                                     
                                     
-                                   
-                       
-                     
+                                    <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="row">
 
-                                    <div class="form-group">
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                            <strong>{{clean( trans('niva-backend.price') , array('Attr.EnableID' => true))}}</strong>
+                                                <input type="text" name="price" class="form-control" value="{{$service->price}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                        <div class="form-group">
                                         <img class="img-fluid pb-4" width="100" height="100" src="{{$service->photo ? '/public/images/media/' . $service->photo->file : '/public/img/200x200.png'}}">
                                         <p><strong>{{clean( trans('niva-backend.photo') , array('Attr.EnableID' => true))}}</strong></p>
                                         <input type="file"  name="photo_id" class="form-control-file"  id="photo_id">
                                     </div>
+                                    </div>
+                                        </div>
+
+                                </div>
+                                </div>
+                                    </div>
+                       
+                     
+
 
 
                                 </div>

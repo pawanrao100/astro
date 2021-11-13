@@ -20,6 +20,7 @@ use App\Models\PortfolioSetting;
 use App\Models\ProjectCategory; 
 use App\Models\HeaderFooterSetting; 
 use App\Models\BlogSetting;
+use App\Models\User;
 use View;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactFormRequest; 
@@ -70,6 +71,8 @@ class HomeController extends Controller
         $data['projects'] = Project::where('language_id', $lang_id)->get();
         $data['testimonials'] = Testimonial::where('language_id', $lang_id)->get();
         $data['posts'] = Post::where('language_id', $lang_id)->get();
+        $data['category'] = ProjectCategory::where('language_id', $lang_id)->get();
+        $data['experts'] = User::where('role_id', 2)->get();
 
         return view('home', compact('langs'), $data);
     }
@@ -287,6 +290,28 @@ class HomeController extends Controller
     }
 
 
+    public function expertdetail($id)
+    {
 
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+
+        $lang_id = $currentLang->id;
+
+        
+        
+        $langs = Language::all();
+        
+        
+
+        $data['category'] = ProjectCategory::where('language_id', $lang_id)->get();
+        $data['expertDetail'] = User::where('id', $id)->first();
+
+        return view('expertdetail', compact('langs'), $data);
+    }
 
 }

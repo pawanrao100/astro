@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ProjectCategoryRequest; 
 use App\Models\Language;
+use App\Models\Photo;
 
 class ProjectCategoryController extends Controller
 {
@@ -21,7 +22,7 @@ class ProjectCategoryController extends Controller
 
         //return $lang;
 
-        $data['categories'] = ProjectCategory::where('language_id', $lang_id)->orderBy('id', 'DESC')->paginate(10);
+      $data['categories'] = ProjectCategory::where('language_id', $lang_id)->orderBy('id', 'DESC')->paginate(10);
 
         $data['lang_id'] = $lang_id;
 
@@ -41,8 +42,18 @@ class ProjectCategoryController extends Controller
 
         $input = $request->all();
 
+        if ($file = $request->file('icon_photo_id')) {
+            
+            $name1 = time() . $file->getClientOriginalName();
 
-        ProjectCategory::create($input);
+            $file->move('images/media/', $name1);
+
+            $photo = Photo::create(['file'=>$name1]);
+
+            $input['icon_photo_id'] = $photo->id;
+        }
+
+      ProjectCategory::create($input);
 
         return back()->with('category_success','Category created successfully!');
     }

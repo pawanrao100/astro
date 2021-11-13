@@ -57,7 +57,7 @@
                                         <select name="role_id" id="role_id" class="form-control">
                                             <option>{{clean( trans('niva-backend.choose_role') , array('Attr.EnableID' => true))}}</option>
                                             @foreach($roles as $role)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                <option value="{{ $role->id }}">{{ $role->disp_name }}</option>
                                             @endforeach 
                                         </select>
         
