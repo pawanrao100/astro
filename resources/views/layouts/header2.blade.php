@@ -36,7 +36,7 @@
 			</a>
 		</div>
 		<ul id="top_menu">
-			<li><a href="#" class="btn_access">Log In</a></li>
+			<li><a href="{{ URL::to('/logout') }}" class="btn_access">Log In</a></li>
 			<li><a href="#" class="btn_access green">Sign Up </a></li>
 		</ul>
 		<!-- /top_menu -->

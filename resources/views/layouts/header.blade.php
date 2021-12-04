@@ -23,6 +23,9 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="http://tradewavetrading.com/best-astro/html/css/custom.css" rel="stylesheet">
 
+	 <!-- SPECIFIC CSS -->
+	 <link href="http://tradewavetrading.com/best-astro/html/css/listing.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,7 +39,7 @@
 			</a>
 		</div>
 		<ul id="top_menu">
-			<li><a href="#" class="btn_access">Log In</a></li>
+			<li><a href="{{ URL::to('/login') }}" class="btn_access">Log In</a></li>
 			<li><a href="#" class="btn_access green">Sign Up </a></li>
 		</ul>
 		<!-- /top_menu -->

@@ -290,6 +290,29 @@ class HomeController extends Controller
     }
 
 
+    public function expertlist()
+    {
+
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+
+        $lang_id = $currentLang->id;
+
+        
+        
+        $langs = Language::all();
+        
+        
+
+        $data['category'] = ProjectCategory::where('language_id', $lang_id)->get();
+        $data['experts'] = User::where('role_id', 2)->get();
+
+        return view('expertlist', compact('langs'), $data);
+    }
     public function expertdetail($id)
     {
 

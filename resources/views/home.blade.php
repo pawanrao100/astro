@@ -62,7 +62,7 @@
 				@foreach ($category as $category)
 				<?php  $photo = Photo::where('id',$category->icon_photo_id)->first(); ?>
 				 <div class="item">
-					<a href="listing.html">
+					<a href="{{ URL::to('/expertlist/') }}">
 						<span>98</span>
 						<img src="{{ URL::to('/') }}/public/images/media/{{$photo->file}}" data-src="{{ URL::to('/') }}/public/images/media/{{$photo->file}}" alt="" class="owl-lazy">
 						<h3>{{ $category->name }}</h3>

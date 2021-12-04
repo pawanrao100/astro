@@ -86,5 +86,12 @@
     <script src="http://tradewavetrading.com/best-astro/html/js/common_func.js"></script>
     <script src="http://tradewavetrading.com/best-astro/html/assets/validate.js"></script>
 
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="http://tradewavetrading.com/best-astro/html/js/sticky_sidebar.min.js"></script>
+    <script src="http://tradewavetrading.com/best-astro/html/js/specific_listing.min.js"></script>
+
+    <!-- Map -->
+    <script src="http://tradewavetrading.com/best-astro/html/js/main_map_scripts.js"></script>
 </body>
 </html>

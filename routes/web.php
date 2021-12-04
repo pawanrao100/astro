@@ -62,6 +62,7 @@ Route::group(['middleware' => 'setlang'], function () {
     Route::get('/changelanguage/{lang}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
     
     Route::get('/about-us', [HomeController::class, 'about'])->name('about');
+    Route::get('/expertlist', [HomeController::class, 'expertlist'])->name('expertlist');
     Route::get('/expert-detail/{number}', [HomeController::class, 'expertdetail'])->name('expert-detail');
     Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
     Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
